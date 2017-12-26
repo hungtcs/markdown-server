@@ -1,6 +1,8 @@
 Markdown Server
 ====
 
+**warning: not finish yet!**
+
 ### 说明
 执行命令在当前目录启动一个 markdown 服务器
 
