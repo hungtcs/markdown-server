@@ -1,40 +1,68 @@
 #!/usr/bin/env node
 const colors = require('colors');
 const minimist = require('minimist');
+const themes = require('../public/themes/know-themes.json');
 const MarkdownServer = require('../lib/markdown-server');
 
 let options = {
-  port: 80
+  port: 8080,
+  path: './',
+  theme: 'github-markdown',
+  highlight: 'tomorrow'
 };
 
 const argvs = minimist(process.argv.slice(2), {
-  string: ['port'],
+  string: ['port', 'theme', 'highlight'],
   alias: {
     p: ['port'],
-    h: ['help']
+    h: ['help'],
+    v: ['version']
   }
 });
 
 let printHelp = function(code) {
   console.log([
-    'usage: markdown-server [options]',
+    'usage: markdown-server [options] [path]',
     '',
     'options:',
-    '  -p --port    Port to use [8080]',
-    '  -h --help    Print this list and exit.'
+    '  -p --port    Specify the port to use, default is 8080',
+    '  -h --help    Print the help',
+    `  --theme      Choose a theme from the list [${ themes.join(',') }], default is github-markdown`,
+    `  --highlight  Select the source code highlight mode in markdown, default is tomorrow, full list see ${ 'https://highlightjs.org/'.blue }`,
+    `  -v --version Print version number`
   ].join('\n'));
   code !== undefined && process.exit(code);
 }
 
 if(argvs.help) {
   printHelp(0);
-} else if(argvs.port) {
+}
+if(argvs.version) {
+  console.log(require('../package.json').version.blue);
+  process.exit(0);
+}
+if(typeof argvs.port !== 'undefined') {
   if(argvs.port.trim() && !Number.isNaN(+argvs.port)) {
     options.port = +argvs.port;
   } else {
-    console.log('ERROR: port is not a number'.red);
+    console.log('ERROR: The port number must be a number'.red);
     printHelp(1);
   }
+}
+if(typeof argvs.theme !== 'undefined') {
+  if(themes.includes(argvs.theme)) {
+    options.theme = argvs.theme;
+  } else {
+    console.log(`ERROR: Unknown theme named '${argvs.theme}'`.red);
+    printHelp(1);
+  }
+}
+if(typeof argvs.highlight !== 'undefined') {
+  options.highlight = argvs.highlight;
+}
+
+if(argvs._ && argvs._.length) {
+  options.path = argvs._[0];
 }
 
 MarkdownServer.createServer(options);

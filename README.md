@@ -2,20 +2,27 @@ Markdown Server
 ====
 
 ### 说明
-执行命令在当前目录启动一个http服务器，可以自动解析 Markdown 文档
+在当前目录启动一个http服务器，可以自动解析 Markdown 文档
 
 ### 使用方法
 ```
+// 安装
 npm install -g markdown-http-server
-markdown-server [-p=1024]
+// 启动
+markdown-server
 ```
 
-### 关于主题
-非常感谢 [MarkdownCSS] 提供的 markdown 样式表文件，
-以及 [github-markdown-css] 提供的适用于 Github 的 markdown 样式
+### 配置
+```
+usage: markdown-server [options] [path]
 
-### 已知 Bugs
-- 静态资源目录的对路径的占用(将在下一版本中修复)
+options:
+  -p --port    Specify the port to use, default is 8080
+  -h --help    Print the help
+  --theme      Choose a theme from the list [github-markdown,air,modest,retro,splendor], default is github-markdown
+  --highlight  Select the source code highlight mode in markdown, default is tomorrow, full list see https://highlightjs.org/
+  -v --version Print version number
+```
 
 [MarkdownCSS]: https://github.com/markdowncss
 [github-markdown-css]: https://github.com/sindresorhus/github-markdown-css
