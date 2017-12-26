@@ -1,5 +1,5 @@
 {
-  "name": "markdown-server",
+  "name": "markdown-http-server",
   "version": "1.0.0",
   "description": "markdown server",
   "main": "bin/markdown-server",
