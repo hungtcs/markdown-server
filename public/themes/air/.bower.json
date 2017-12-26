@@ -1,0 +1,14 @@
+{
+  "name": "air",
+  "homepage": "https://github.com/markdowncss/air",
+  "_release": "f31f83d874",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f31f83d874e0597a6ca95084e147f088531170ec"
+  },
+  "_source": "https://github.com/markdowncss/air.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/markdowncss/air.git",
+  "_direct": true
+}

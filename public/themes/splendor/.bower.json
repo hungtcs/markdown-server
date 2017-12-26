@@ -1,0 +1,15 @@
+{
+  "name": "splendor",
+  "homepage": "https://github.com/markdowncss/splendor",
+  "version": "1.0.0",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.0",
+    "commit": "98ae18aceaad344bf077b02f83fe5b51b062210b"
+  },
+  "_source": "https://github.com/markdowncss/splendor.git",
+  "_target": "^1.0.0",
+  "_originalSource": "https://github.com/markdowncss/splendor.git",
+  "_direct": true
+}
