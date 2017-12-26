@@ -1,6 +1,6 @@
 {
   "name": "markdown-http-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "markdown server",
   "main": "bin/markdown-server",
   "license": "MIT",
@@ -9,10 +9,16 @@
     "start": "node ./bin/markdown-server"
   },
   "dependencies": {
+    "colors": "^1.1.2",
     "ecstatic": "^3.1.1",
     "express": "^4.16.2",
     "marked": "^0.3.9",
+    "minimist": "^1.2.0",
+    "morgan": "^1.9.0",
     "nunjucks": "^3.0.1"
   },
-  "repository": "https://github.com/hungtcs/markdown-server.git"
+  "repository": "https://github.com/hungtcs/markdown-server.git",
+  "bin": {
+    "markdown-server": "./bin/markdown-server"
+  }
 }

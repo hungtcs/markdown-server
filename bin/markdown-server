@@ -1,8 +1,40 @@
 #!/usr/bin/env node
+const colors = require('colors');
+const minimist = require('minimist');
 const MarkdownServer = require('../lib/markdown-server');
 
+let options = {
+  port: 80
+};
 
-
-MarkdownServer.createServer({
-
+const argvs = minimist(process.argv.slice(2), {
+  string: ['port'],
+  alias: {
+    p: ['port'],
+    h: ['help']
+  }
 });
+
+let printHelp = function(code) {
+  console.log([
+    'usage: markdown-server [options]',
+    '',
+    'options:',
+    '  -p --port    Port to use [8080]',
+    '  -h --help    Print this list and exit.'
+  ].join('\n'));
+  code !== undefined && process.exit(code);
+}
+
+if(argvs.help) {
+  printHelp(0);
+} else if(argvs.port) {
+  if(argvs.port.trim() && !Number.isNaN(+argvs.port)) {
+    options.port = +argvs.port;
+  } else {
+    console.log('ERROR: port is not a number'.red);
+    printHelp(1);
+  }
+}
+
+MarkdownServer.createServer(options);
