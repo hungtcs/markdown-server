@@ -12,7 +12,12 @@ let options = {
 };
 
 const argvs = minimist(process.argv.slice(2), {
-  string: ['port', 'theme', 'highlight'],
+  string: ['port', 'theme', 'highlight', 'index'],
+  boolean: ['help', 'version', 'autoIndex'],
+  default: {
+    index: 'README.md',
+    autoIndex: true
+  },
   alias: {
     p: ['port'],
     h: ['help'],

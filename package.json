@@ -22,5 +22,8 @@
   "repository": "https://github.com/hungtcs/markdown-server.git",
   "bin": {
     "markdown-server": "./bin/markdown-server"
-  }
+  },
+  "keywords": [
+    "markdown"
+  ]
 }
